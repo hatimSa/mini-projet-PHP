@@ -1,75 +1,180 @@
 <?php
-session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
+include('prof_template.php');
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professor Dashboard</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
 
-        .dashboard-container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin: 20px;
-        }
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
-        h2 {
-            color: #333;
-        }
+<link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 
-        .section {
-            margin-bottom: 20px;
-        }
+<link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 
-        .card {
-            background-color: #f0f0f0;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-<body>
+<link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
 
-    <div class="dashboard-container">
-        <h2>Professor Dashboard</h2>
+<link rel="stylesheet" href="dist/css/adminlte.min.css?v=3.2.0">
 
-        <div class="section">
-            <h3>My Courses</h3>
-            <div class="card">
-                <!-- Content for My Courses -->
-            </div>
-        </div>
+<link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
-        <div class="section">
-            <h3>Student Grades</h3>
-            <div class="card">
-                <!-- Content for Student Grades -->
-            </div>
-        </div>
+<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
 
-        <!-- Add more sections and cards as needed -->
+<link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<script nonce="13ab36d2-1ee0-4963-894c-9b5b88a2f68d">
+    (function(w, d) {
+        ! function(bg, bh, bi, bj) {
+            bg[bi] = bg[bi] || {};
+            bg[bi].executed = [];
+            bg.zaraz = {
+                deferred: [],
+                listeners: []
+            };
+            bg.zaraz.q = [];
+            bg.zaraz._f = function(bk) {
+                return function() {
+                    var bl = Array.prototype.slice.call(arguments);
+                    bg.zaraz.q.push({
+                        m: bk,
+                        a: bl
+                    })
+                }
+            };
+            for (const bm of ["track", "set", "debug"]) bg.zaraz[bm] = bg.zaraz._f(bm);
+            bg.zaraz.init = () => {
+                var bn = bh.getElementsByTagName(bj)[0],
+                    bo = bh.createElement(bj),
+                    bp = bh.getElementsByTagName("title")[0];
+                bp && (bg[bi].t = bh.getElementsByTagName("title")[0].text);
+                bg[bi].x = Math.random();
+                bg[bi].w = bg.screen.width;
+                bg[bi].h = bg.screen.height;
+                bg[bi].j = bg.innerHeight;
+                bg[bi].e = bg.innerWidth;
+                bg[bi].l = bg.location.href;
+                bg[bi].r = bh.referrer;
+                bg[bi].k = bg.screen.colorDepth;
+                bg[bi].n = bh.characterSet;
+                bg[bi].o = (new Date).getTimezoneOffset();
+                if (bg.dataLayer)
+                    for (const bt of Object.entries(Object.entries(dataLayer).reduce(((bu, bv) => ({
+                            ...bu[1],
+                            ...bv[1]
+                        }))))) zaraz.set(bt[0], bt[1], {
+                        scope: "page"
+                    });
+                bg[bi].q = [];
+                for (; bg.zaraz.q.length;) {
+                    const bw = bg.zaraz.q.shift();
+                    bg[bi].q.push(bw)
+                }
+                bo.defer = !0;
+                for (const bx of [localStorage, sessionStorage]) Object.keys(bx || {}).filter((bz => bz.startsWith("_zaraz_"))).forEach((by => {
+                    try {
+                        bg[bi]["z_" + by.slice(7)] = JSON.parse(bx.getItem(by))
+                    } catch {
+                        bg[bi]["z_" + by.slice(7)] = bx.getItem(by)
+                    }
+                }));
+                bo.referrerPolicy = "origin";
+                bo.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(bg[bi])));
+                bn.parentNode.insertBefore(bo, bn)
+            };
+            ["complete", "interactive"].includes(bh.readyState) ? zaraz.init() : bg.addEventListener("DOMContentLoaded", zaraz.init)
+        }(w, d, "zarazData", "script");
+    })(window, document);
+</script>
 
+<?php
+
+if (isset($users['username'])) {
+    $username = $users['username'];
+} else {
+    $username = 'Utilisateur';
+}
+
+?>
+
+<body style="background-color: Azure">
+    <div class="container">
+        <h3>Bienvenue <?= $username; ?> !</h3><br><br>
     </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="card text-white bg-primary mb-3 mr-3 mx-3 my-3" style="max-width: 20rem;">
+                    <div class="card-header">Professeurs</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Ajouter une séance</h5>
+                        <p class="card-text">Description: Ici vous pouvez ajouter les séances de cours d'une matière</p>
+                    </div>
+                    <div class="icon">
+                        <i class="bi bi-door-closed-fill"></i>
+                    </div><br>
+                    <a href="#" class="card-footer bg-transparent border-light"><i class="fas fa-arrow-circle-right">Plus d'Infos</i></a>
+                </div>
+                <div class="card text-white bg-secondary mb-3 mr-3 mx-3 my-3" style="max-width:20rem;">
+                    <div class="card-header">Professeurs</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Salle</h5>
+                        <p class="card-text">Description: Ici vous pouvez ajuster le numéro de la salle pour la séance ajouter</p>
+                    </div>
+                    <div class="icon">
+                        <i class="bi bi-door-closed"></i>
+                    </div><br>
+                    <a href="#" class="card-footer bg-transparent border-light"><i class="fas fa-arrow-circle-right">Plus d'Infos</i></a>
+                </div>
+                <div class="card text-white bg-info mb-3 mr-3 mx-3 my-3" style="max-width: 20rem;">
+                    <div class="card-header">Utilisateur</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Les cours</h5>
+                        <p class="card-text">Description: Ici vous pouvez uploader les cours sous format PDF</p>
+                    </div>
+                    <div class="icon">
+                        <i class="bi bi-filetype-pdf"></i>
+                    </div><br>
+                    <a href="#" class="card-footer bg-transparent border-light"><i class="fas fa-arrow-circle-right">Plus d'Infos</i></a>
+                </div>
+            </div>
+    </section>
 
 </body>
 
-</html>
+<script src="plugins/jquery/jquery.min.js"></script>
+
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<script>
+    $.widget.bridge('uibutton', $.ui.button)
+</script>
+
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="plugins/chart.js/Chart.min.js"></script>
+
+<script src="plugins/sparklines/sparkline.js"></script>
+
+<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+
+<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+
+<script src="dist/js/adminlte.js?v=3.2.0"></script>
+
+<script src="dist/js/demo.js"></script>
+
+<script src="dist/js/pages/dashboard.js"></script>

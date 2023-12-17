@@ -89,9 +89,19 @@ include('dashboard_template.php');
     })(window, document);
 </script>
 
+<?php
+
+if (isset($users['username'])) {
+    $username = $users['username'];
+} else {
+    $username = 'Utilisateur';
+}
+
+?>
+
 <body style="background-color: Azure">
     <div class="container">
-        <h3>Bienvenue Admin !</h3><br><br>
+        <h3>Bienvenue <?= $username; ?> !</h3><br><br>
     </div>
 
     <section class="content">
