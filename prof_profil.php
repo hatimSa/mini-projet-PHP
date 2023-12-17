@@ -10,7 +10,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Ajoutez un paramètre pour spécifier l'ID du professeur que vous souhaitez récupérer
-    $professor_id = isset($_GET['prof_id']) ? $_GET['prof_id'] : null;
+    $professor_id = isset($_GET['id']) ? $_GET['id'] : null;
 
     if ($professor_id) {
         $stmt = $conn->prepare("SELECT * FROM Prof WHERE prof_id = :prof_id");
@@ -22,8 +22,6 @@ try {
         if (!$professor) {
             echo "Aucun professeur trouvé avec l'ID spécifié.";
         }
-    } else {
-        echo "Veuillez spécifier l'ID du professeur.";
     }
 } catch (PDOException $e) {
     echo "Erreur: " . $e->getMessage();
@@ -72,7 +70,7 @@ try {
                                                     <div class="card-body">
                                                         <input type="file" id="photoInput" name="photo">
                                                     </div>
-                                                    <h4><?php echo isset($professor['prof_full_name']); ?></h4>
+                                                    <h4><?php echo isset($professor['prof_full_name']) ? $professor['prof_full_name'] : ''; ?></h4>
                                                     <p class="text-secondary mb-1">Prof chez FSA</p>
                                                     <p class="text-muted font-size-sm">Agadir</p>
                                                     <button type="button" class="btn btn-danger" data-target="#deleteModal" data-toggle="modal">Supprimer</button>
@@ -110,7 +108,7 @@ try {
                                                 <h6 class="mb-0">ID</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <?php echo isset($professor['prof_id']); ?>
+                                                <?php echo isset($professor['prof_id']) ? $professor['prof_id'] : ''; ?>
                                             </div>
                                         </div>
                                         <hr>
@@ -119,7 +117,7 @@ try {
                                                 <h6 class="mb-0">Nom Complet</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <?php echo isset($professor['prof_full_name']); ?>
+                                                <?php echo isset($professor['prof_full_name']) ? $professor['prof_full_name'] : ''; ?>
                                             </div>
                                         </div>
                                         <hr>
@@ -128,7 +126,7 @@ try {
                                                 <h6 class="mb-0">Département</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <?php echo isset($professor['departement'])?>
+                                                <?php echo isset($professor['departement']) ? $professor['departement'] : ''; ?>
                                             </div>
                                         </div>
                                         <hr>
@@ -137,7 +135,7 @@ try {
                                                 <h6 class="mb-0">Filière</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <?php echo isset($professor['filiere'])?>
+                                                <?php echo isset($professor['filiere']) ? $professor['filiere'] : ''; ?>
                                             </div>
                                         </div>
                                         <hr>
@@ -146,7 +144,7 @@ try {
                                                 <h6 class="mb-0">Matières enseignèes</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <?php echo isset($professor['matiere'])?>
+                                                <?php echo isset($professor['matiere']) ? $professor['matiere'] : ''; ?>
                                             </div>
                                         </div>
                                         <hr>

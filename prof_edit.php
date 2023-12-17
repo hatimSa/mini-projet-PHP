@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <h2>Modifier un Professeur</h2>
 
-    <form action="edit_prof.php?id=<?= $professor['prof_id']; ?>" method="post">
+    <form action="prof_edit.php?id=<?= $professor['prof_id']; ?>" method="post">
         <!-- Affichez les données existantes dans le formulaire pour modification -->
         <label for="nom">Nom :</label>
         <input type="text" name="prof_full_name" value="<?= $professor['prof_full_name'] ?? ''; ?>" required>

@@ -40,7 +40,7 @@ try {
                     <td><?= $professor['filiere']; ?></td>
                     <td><?= $professor['matiere']; ?></td>
                     <td>
-                        <a href="prof_profil.php?professor_id=<?= $professor['prof_id']; ?>" class="btn btn-sm btn-primary align-center">
+                        <a href="prof_profil.php?id=<?= $professor['prof_id']; ?>" class="btn btn-sm btn-primary align-center">
                             <i class="fas fa-eye"></i>
                         </a>
                         <a href="prof_edit.php?id=<?= $professor['prof_id']; ?>" class="btn btn-sm btn-info mx-2 align-center">
