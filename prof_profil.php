@@ -94,7 +94,7 @@ try {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <a href="prof_edit.php" class="btn btn-outline-info">Modifier</a>
+                                                    <a href="prof_edit.php?id=<?= $professor['prof_id']; ?>" class="btn btn-outline-info">Modifier</a>
                                             </div>
                                         </div>
                                     </div>
