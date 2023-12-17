@@ -1,5 +1,6 @@
 <?php
 
+include 'config.php';
 include('prof_template.php');
 
 ?>

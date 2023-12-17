@@ -72,7 +72,7 @@
                         </nav>
                         <!-- toggler -->
                         <button class="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
-                            <i class="bi bi-list" style="width: 50px; heigth: 50px;"></i>
+                            <i class="bi bi-list" style="width: 50px; height: 50px;"></i>
                         </button>
                     </div>
 

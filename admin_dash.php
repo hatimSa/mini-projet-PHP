@@ -1,5 +1,6 @@
 <?php
 
+include 'config.php';
 include('dashboard_template.php');
 
 ?>
@@ -101,7 +102,7 @@ if (isset($users['username'])) {
 
 <body style="background-color: Azure">
     <div class="container">
-        <h3>Bienvenue <?= $username; ?> !</h3><br><br>
+        <h3>Bienvenue <?php echo isset($username) ? $username : 'Utilisateur'; ?> !</h3><br><br>
     </div>
 
     <section class="content">

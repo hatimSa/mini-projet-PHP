@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $departement = $_POST['departement'];
     $filiere = $_POST['filiere'];
     $matiere = $_POST['matiere'];
+    $password = $_POST['password'];
 
     try {
         $conn = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_password);
@@ -161,6 +162,9 @@ function generateSecurePassword($length = 12)
 
         <label for="matiere">Matières enseignées :</label>
         <input type="text" name="matiere" required><br>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" name="password" required><br>
 
         <input type="submit" value="Ajouter">
     </form>

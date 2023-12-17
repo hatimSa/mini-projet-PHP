@@ -46,13 +46,13 @@
                         <i class="bi bi-person-circle"></i><span class="ms-1 d-none d-sm-inline">Votre Profil</span>
                     </a>
                     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
-                        <li><a class="dropdown-item" href="{{ route('profil') }}">{{ Auth::user()->name }}</a></li>
+                        <li><a class="dropdown-item"><?php echo isset($user['username']) ? $user['username'] : ''; ?></a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li class="dropdown-item">
                             <a href="#" onclick="document.getElementById('form-logout').submit();">
-                                <form action="{{ route('logout') }}" method="post" id="form-logout">@csrf</form>
+                                <form action="logout.php" id="form-logout"></form>
                                 Deconnexion
                             </a>
                         </li>
@@ -71,7 +71,7 @@
                         </nav>
                         <!-- toggler -->
                         <button class="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
-                            <i class="bi bi-list" style="width: 50px; heigth: 50px;"></i>
+                            <i class="bi bi-list" style="width: 50px; height: 50px;"></i>
                         </button>
                     </div>
 
