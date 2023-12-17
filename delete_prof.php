@@ -14,6 +14,10 @@ if (isset($_GET['id'])) {
         $stmt->bindParam(':profId', $profId);
         $stmt->execute();
 
+        $stmt2 = $conn->prepare("DELETE FROM users WHERE user_id = :profId");
+        $stmt2->bindParam(':profId', $profId);
+        $stmt2->execute();
+
         // Redirection vers la liste des professeurs avec un message de succès
         header("Location: prof_list.php?success=1");
         exit();

@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $conn = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            // Prépare la requête de mise à jour
+            // Prépare la requête de mise à jour dans la table 'prof'
             $stmt = $conn->prepare("UPDATE Prof SET prof_full_name = :profFullName, departement = :departement, filiere = :filiere, matiere = :matiere WHERE prof_id = :profId");
 
             // Lie les valeurs aux paramètres de la requête
@@ -33,6 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Exécute la requête de mise à jour
             $stmt->execute();
+
+            // Prépare la requête de mise à jour dans la table 'users'
+            $stmt2 = $conn->prepare("UPDATE users SET username = :profFullName WHERE user_id = :profId");
+            $stmt2->bindParam(':profFullName', $profFullName);
+            $stmt2->bindParam(':profId', $profId);
+            $stmt2->execute();
 
             // Redirection vers prof_list.php avec un message de succès
             header("Location: prof_list.php?success=1&message=" . urlencode("Les informations du professeur ont été mises à jour avec succès."));
