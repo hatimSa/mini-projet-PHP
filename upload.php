@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $db_host = "localhost";
                 $db_user = "root";
                 $db_pass = "";
-                $db_name = "mini_projet";
+                $db_name = "profmanage";
 
                 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 if ($conn->query($sql) === TRUE) {
                     echo "The file " . basename($_FILES["file"]["name"]) . " has been uploaded and the information has been stored in the database.";
+                    header("Location: download.php");
                 } else {
                     echo "Sorry, there was an error uploading your file and storing information in the database: " . $conn->error;
                 }

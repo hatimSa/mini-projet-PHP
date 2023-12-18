@@ -139,7 +139,7 @@ if (isset($users['username'])) {
                     <div class="icon">
                         <i class="bi bi-filetype-pdf"></i>
                     </div><br>
-                    <a href="#" class="card-footer bg-transparent border-light"><i class="fas fa-arrow-circle-right">Plus d'Infos</i></a>
+                    <a href="index.php" class="card-footer bg-transparent border-light"><i class="fas fa-arrow-circle-right">Plus d'Infos</i></a>
                 </div>
             </div>
     </section>

@@ -1,10 +1,13 @@
 <?php
+
+include('prof_template.php');
+
 //database connection details
 
 $db_host = "localhost";
 $db_user = "root";
 $db_pass = "";
-$db_name = "mini_projet";
+$db_name = "profmanage";
 
  $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 

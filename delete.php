@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $db_host = "localhost";
     $db_user = "root";
     $db_pass = "";
-    $db_name = "mini_projet";
+    $db_name = "profmanage";
 
     $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
 
     if ($conn->query($sql) === TRUE) {
         echo "File deleted successfully.";
+        header("Location: download.php");
     } else {
         echo "Error deleting file: " . $conn->error;
     }

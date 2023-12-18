@@ -1,3 +1,10 @@
+<?php
+
+include 'config.php';
+include 'prof_template.php';
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +33,8 @@
                 <label for="prof" class="form-label">Prof</label>
                 <input placeholder="prof" type="text" class="form-control" name="prof" id="prof">
             </div>
-			<button type="submit" class="btn btn-primary">Ajouter</button>
+			<button type="submit" class="btn btn-primary">Ajouter</button><br><br>
+			<a href="download.php">Voir tous les cours</a>
 		</form>
 	</div>
 
