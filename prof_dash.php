@@ -123,7 +123,7 @@ if (isset($users['username'])) {
                     <div class="card-header">Professeurs</div>
                     <div class="card-body">
                         <h5 class="card-title">Salle</h5>
-                        <p class="card-text">Description: Ici vous pouvez ajuster le numéro de la salle pour la séance ajouter</p>
+                        <p class="card-text">Description: Ici vous pouvez ajuster le numéro de la salle pour la séance ajouté</p>
                     </div>
                     <div class="icon">
                         <i class="bi bi-door-closed"></i>
