@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'config.php';
 
 // Vérifie si l'ID du professeur est fourni dans l'URL

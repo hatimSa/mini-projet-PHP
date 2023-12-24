@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('prof_template.php');
 
 //database connection details

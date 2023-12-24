@@ -1,11 +1,21 @@
 <?php
+
+session_start();
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include 'config.php';
 include('dashboard_template.php');
 
+$departements = [];
+$filieres = [];
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['prof_full_name'];
-    $departement = $_POST['departement'];
-    $filiere = $_POST['filiere'];
+    $departement_posted = $_POST['dept_name'];
+    $filiere_posted = $_POST['filiere_name'];
     $matiere = $_POST['matiere'];
     $password = $_POST['password'];
 
@@ -34,11 +44,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // 3. Insérer le professeur dans la table Prof avec l'ID de l'utilisateur
         $stmtProf = $conn->prepare("INSERT INTO Prof(prof_full_name, departement, filiere, matiere, prof_id) VALUES (:nom, :departement, :filiere, :matiere, :userId)");
         $stmtProf->bindParam(':nom', $nom);
-        $stmtProf->bindParam(':departement', $departement);
-        $stmtProf->bindParam(':filiere', $filiere);
+        $stmtProf->bindParam(':departement', $departement_posted);
+        $stmtProf->bindParam(':filiere', $filiere_posted);
         $stmtProf->bindParam(':matiere', $matiere);
         $stmtProf->bindParam(':userId', $userId);
         $stmtProf->execute();
+
+        // Récupérer les départements depuis la base de données
+        $stmtDept = $conn->query("SELECT dept_name FROM departement");
+        $departements = $stmtDept->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($departements);
+
+        // Récupérer les filières depuis la base de données
+        $stmtFiliere = $conn->query("SELECT filiere_name FROM filiere");
+        $filieres = $stmtFiliere->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($filieres);
 
         $_SESSION['success_message'] = "Le professeur a été ajouté avec succès.";
 
@@ -114,6 +134,15 @@ function generateSecurePassword($length = 12)
             border-radius: 4px;
         }
 
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
         input[type="submit"] {
             background-color: #4caf50;
             color: #fff;
@@ -150,15 +179,25 @@ function generateSecurePassword($length = 12)
     ?>
 
     <form action="prof_add.php" method="post">
-        <!-- Créez votre formulaire avec les champs nécessaires -->
+
         <label for="nom">Nom :</label>
         <input type="text" name="prof_full_name" required><br>
 
         <label for="departement">Département :</label>
-        <input type="text" name="departement" required><br>
+        <select class="custom-select" id="inputGroupSelect01" name="dept_name" required>
+            <option selected disabled>Sélectionnez le département: </option>
+            <?php foreach ($departements as $dept) : ?>
+                <option value="<?= $dept['dept_name']; ?>"><?php echo $dept['dept_name']; ?></option>
+            <?php endforeach; ?>
+        </select>
 
         <label for="filiere">Filière :</label>
-        <input type="text" name="filiere" required><br>
+        <select class="custom-select" id="inputGroupSelect02" name="filiere_name" required>
+            <option selected disabled>Sélectionnez la filière: </option>
+            <?php foreach ($filieres as $fil) : ?>
+                <option value="<?= $fil['filiere_name']; ?>"><?php echo $fil['filiere_name']; ?></option>
+            <?php endforeach; ?>
+        </select>
 
         <label for="matiere">Matières enseignées :</label>
         <input type="text" name="matiere" required><br>

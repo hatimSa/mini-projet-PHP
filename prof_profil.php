@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include 'config.php';
 include('dashboard_template.php');
 

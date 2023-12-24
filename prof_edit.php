@@ -1,9 +1,12 @@
 <?php
+session_start();
 include 'config.php';
 include 'dashboard_template.php';
 
 $professor = [];
 $successMessage = '';
+$departements = [];
+$filieres = [];
 
 // Vérifie si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -119,6 +122,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        select {
             width: 100%;
             padding: 8px;
             margin-bottom: 16px;

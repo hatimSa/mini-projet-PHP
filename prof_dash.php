@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 include 'config.php';
 include('prof_template.php');
 
@@ -117,7 +118,7 @@ if (isset($users['username'])) {
                     <div class="icon">
                         <i class="bi bi-door-closed-fill"></i>
                     </div><br>
-                    <a href="#" class="card-footer bg-transparent border-light"><i class="fas fa-arrow-circle-right">Plus d'Infos</i></a>
+                    <a href="add_seance.php" class="card-footer bg-transparent border-light"><i class="fas fa-arrow-circle-right">Plus d'Infos</i></a>
                 </div>
                 <div class="card text-white bg-secondary mb-3 mr-3 mx-3 my-3" style="max-width:20rem;">
                     <div class="card-header">Professeurs</div>
