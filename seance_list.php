@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 include 'config.php';
 include('prof_template.php');
 
@@ -80,7 +83,6 @@ try {
                     <td><?= $seance['matiere']; ?></td>
                     <td><?= $seance['salle_num']; ?></td>
                     <td class="actions">
-                        <a href="seance_edit.php?id=<?= $seance['seance_id']; ?>" class="btn btn-primary">Update</a>
                         <a href="seance_delete.php?id=<?= $seance['seance_id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this seance?')">Delete</a>
                     </td>
                 </tr>

@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 include 'config.php';
 include('prof_template.php');
 
