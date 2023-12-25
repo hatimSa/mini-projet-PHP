@@ -14,8 +14,8 @@ $filieres = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['prof_full_name'];
-    $departement_posted = $_POST['dept_name'];
-    $filiere_posted = $_POST['filiere_name'];
+    $departement_posted = isset($_POST['departement']) ? $_POST['departement'] : null;
+    $filiere_posted = isset($_POST['filiere']) ? $_POST['filiere'] : null;
     $matiere = $_POST['matiere'];
     $password = $_POST['password'];
 
@@ -51,14 +51,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmtProf->execute();
 
         // Récupérer les départements depuis la base de données
-        $stmtDept = $conn->query("SELECT dept_name FROM departement");
+        $stmtDept = $conn->query("SELECT * FROM departement");
         $departements = $stmtDept->fetchAll(PDO::FETCH_ASSOC);
         var_dump($departements);
+        print_r($departements);
 
         // Récupérer les filières depuis la base de données
-        $stmtFiliere = $conn->query("SELECT filiere_name FROM filiere");
+        $stmtFiliere = $conn->query("SELECT * FROM filiere");
         $filieres = $stmtFiliere->fetchAll(PDO::FETCH_ASSOC);
         var_dump($filieres);
+        print_r($departements);
 
         $_SESSION['success_message'] = "Le professeur a été ajouté avec succès.";
 
@@ -184,7 +186,7 @@ function generateSecurePassword($length = 12)
         <input type="text" name="prof_full_name" required><br>
 
         <label for="departement">Département :</label>
-        <select class="custom-select" id="inputGroupSelect01" name="dept_name" required>
+        <select class="custom-select" id="inputGroupSelect01" name="departement" required>
             <option selected disabled>Sélectionnez le département: </option>
             <?php foreach ($departements as $dept) : ?>
                 <option value="<?= $dept['dept_name']; ?>"><?php echo $dept['dept_name']; ?></option>
@@ -192,7 +194,7 @@ function generateSecurePassword($length = 12)
         </select>
 
         <label for="filiere">Filière :</label>
-        <select class="custom-select" id="inputGroupSelect02" name="filiere_name" required>
+        <select class="custom-select" id="inputGroupSelect02" name="filiere" required>
             <option selected disabled>Sélectionnez la filière: </option>
             <?php foreach ($filieres as $fil) : ?>
                 <option value="<?= $fil['filiere_name']; ?>"><?php echo $fil['filiere_name']; ?></option>
