@@ -118,18 +118,18 @@ if (isset($users['username'])) {
                     <div class="icon">
                         <i class="bi bi-door-closed-fill"></i>
                     </div><br>
-                    <a href="add_seance.php" class="card-footer bg-transparent border-light"><i class="fas fa-arrow-circle-right">Plus d'Infos</i></a>
+                    <a href="seance_add.php" class="card-footer bg-transparent border-light"><i class="fas fa-arrow-circle-right">Plus d'Infos</i></a>
                 </div>
                 <div class="card text-white bg-secondary mb-3 mr-3 mx-3 my-3" style="max-width:20rem;">
                     <div class="card-header">Professeurs</div>
                     <div class="card-body">
-                        <h5 class="card-title">Salle</h5>
-                        <p class="card-text">Description: Ici vous pouvez ajuster le numéro de la salle pour la séance ajouté</p>
+                        <h5 class="card-title">Liste des séances</h5>
+                        <p class="card-text">Description: Ici vous pouvez voir la liste des séances ajoutés</p>
                     </div>
                     <div class="icon">
                         <i class="bi bi-door-closed"></i>
                     </div><br>
-                    <a href="#" class="card-footer bg-transparent border-light"><i class="fas fa-arrow-circle-right">Plus d'Infos</i></a>
+                    <a href="seance_list.php" class="card-footer bg-transparent border-light"><i class="fas fa-arrow-circle-right">Plus d'Infos</i></a>
                 </div>
                 <div class="card text-white bg-info mb-3 mr-3 mx-3 my-3" style="max-width: 20rem;">
                     <div class="card-header">Utilisateur</div>

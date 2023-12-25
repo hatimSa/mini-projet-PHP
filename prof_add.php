@@ -63,9 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         print_r($departements);
 
         $_SESSION['success_message'] = "Le professeur a été ajouté avec succès.";
-
-        // Rediriger vers la liste des professeurs ou une autre page
-        header("Location: prof_list.php");
         exit();
     } catch (PDOException $e) {
         $_SESSION['error_message'] = "Erreur: " . $e->getMessage();

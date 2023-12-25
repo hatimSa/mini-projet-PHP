@@ -34,12 +34,20 @@
                 </li>
                 <li class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-add"></i><span class="ms-1 d-none d-sm-inline">Gestion des cours</span>
+                        <i class="bi bi-door-open"></i><span class="ms-1 d-none d-sm-inline">Gestion des séances</span>
                     </a>
                     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
-                        <li><a class="dropdown-item" href="#">Ajouter une séance</a></li>
-                        <li><a class="dropdown-item" href="#">Salle</a></li>
+                        <li><a class="dropdown-item" href="seance_add.php">Ajouter une séance</a></li>
+                        <li><a class="dropdown-item" href="seance_list.php">la liste des séances</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-book"></i><span class="ms-1 d-none d-sm-inline">Gestion des cours</span>
+                    </a>
+                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
                         <li><a class="dropdown-item" href="index.php">Upload des cours</a></li>
+                        <li><a class="dropdown-item" href="download.php">la liste des cours</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
