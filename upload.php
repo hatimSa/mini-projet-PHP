@@ -2,6 +2,11 @@
 
 session_start();
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
        // Ensure the "uploads" directory exists
        $target_dir = "uploads/";

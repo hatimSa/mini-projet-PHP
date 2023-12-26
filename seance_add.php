@@ -2,6 +2,11 @@
 
 session_start();
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
 $db_host = "localhost";
 $db_user = "root";
 $db_pass = "";

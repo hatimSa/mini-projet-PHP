@@ -1,5 +1,12 @@
 <?php
+
 session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
 include('prof_template.php');
 
 //database connection details
